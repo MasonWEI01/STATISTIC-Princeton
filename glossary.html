@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="glossary-container">
+                <h1>Glossary (术语表)</h1>
+                <p>This glossary provides Chinese-English translations of specialized terminology in probability theory, focusing on terms from Part 2 of the Princeton Guide to Probability Theory.</p>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Random Variable</div>
+                    <div class="glossary-term-cn">随机变量</div>
+                    <div class="glossary-definition">A function that assigns a real number to each outcome in the sample space of a random experiment.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Probability Mass Function (PMF)</div>
+                    <div class="glossary-term-cn">概率质量函数</div>
+                    <div class="glossary-definition">A function that gives the probability that a discrete random variable is exactly equal to some value.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Probability Density Function (PDF)</div>
+                    <div class="glossary-term-cn">概率密度函数</div>
+                    <div class="glossary-definition">A function whose value at any given sample point in the sample space can be interpreted as providing a relative likelihood that the value of the random variable would equal that sample.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Cumulative Distribution Function (CDF)</div>
+                    <div class="glossary-term-cn">累积分布函数</div>
+                    <div class="glossary-definition">A function that gives the probability that a random variable X takes on a value less than or equal to x.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Expected Value</div>
+                    <div class="glossary-term-cn">期望值</div>
+                    <div class="glossary-definition">The weighted average of all possible values that a random variable can take on, where the weights are the probabilities of taking on those values.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Variance</div>
+                    <div class="glossary-term-cn">方差</div>
+                    <div class="glossary-definition">A measure of how far a set of numbers is spread out from their average value.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Standard Deviation</div>
+                    <div class="glossary-term-cn">标准差</div>
+                    <div class="glossary-definition">A measure of the amount of variation or dispersion of a set of values, defined as the square root of the variance.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Convolution</div>
+                    <div class="glossary-term-cn">卷积</div>
+                    <div class="glossary-definition">A mathematical operation on two functions that produces a third function expressing how the shape of one is modified by the other.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Moment Generating Function</div>
+                    <div class="glossary-term-cn">矩母函数</div>
+                    <div class="glossary-definition">A function that generates the moments of a probability distribution.</div>
+                </div>
+                
+                <div class="glossary-item">
+                    <div class="glossary-term">Law of Large Numbers</div>
+                    <div class="glossary-term-cn">大数定律</div>
+                    <div class="glossary-definition">A theorem that describes the result of performing the same experiment a large number of times, stating that the average of the results will be close to the expected value.</div>
+                </div>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

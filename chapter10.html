@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 10: Tools: Convolution and Variable Substitution - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 10: Tools: Convolution and Variable Substitution (工具：卷积和变量替换)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Convolution</div>
+                        <p>The convolution of two functions f and g, denoted by (f * g), is defined as:</p>
+                        <p>(f * g)(t) = ∫<sub>-∞</sub><sup>∞</sup> f(τ)g(t-τ) dτ</p>
+                        <p>两个函数f和g的卷积，记为(f * g)，定义为上述积分。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Sum of Independent Random Variables</div>
+                        <p>If X and Y are independent random variables with probability density functions f<sub>X</sub> and f<sub>Y</sub>, then the probability density function of Z = X + Y is the convolution of f<sub>X</sub> and f<sub>Y</sub>:</p>
+                        <p>f<sub>Z</sub>(z) = (f<sub>X</sub> * f<sub>Y</sub>)(z) = ∫<sub>-∞</sub><sup>∞</sup> f<sub>X</sub>(x)f<sub>Y</sub>(z-x) dx</p>
+                        <p>如果X和Y是具有概率密度函数f<sub>X</sub>和f<sub>Y</sub>的独立随机变量，则Z = X + Y的概率密度函数是f<sub>X</sub>和f<sub>Y</sub>的卷积。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Variable Substitution</div>
+                        <p>If X is a random variable with probability density function f<sub>X</sub>, and Y = g(X) is a function of X, then the probability density function of Y can be found using the change of variable formula.</p>
+                        <p>如果X是具有概率密度函数f<sub>X</sub>的随机变量，Y = g(X)是X的函数，则Y的概率密度函数可以使用变量替换公式求得。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Convolution of PMFs</div>
+                        <p>If X and Y are independent discrete random variables with PMFs p<sub>X</sub> and p<sub>Y</sub>, then the PMF of Z = X + Y is:</p>
+                        <p>p<sub>Z</sub>(z) = ∑<sub>x</sub> p<sub>X</sub>(x)p<sub>Y</sub>(z-x)</p>
+                        <p>Where the sum is over all possible values of X.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Convolution of PDFs</div>
+                        <p>If X and Y are independent continuous random variables with PDFs f<sub>X</sub> and f<sub>Y</sub>, then the PDF of Z = X + Y is:</p>
+                        <p>f<sub>Z</sub>(z) = ∫<sub>-∞</sub><sup>∞</sup> f<sub>X</sub>(x)f<sub>Y</sub>(z-x) dx</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Change of Variable Formula (Univariate)</div>
+                        <p>If X has PDF f<sub>X</sub> and Y = g(X) where g is a strictly monotonic differentiable function, then the PDF of Y is:</p>
+                        <p>f<sub>Y</sub>(y) = f<sub>X</sub>(g<sup>-1</sup>(y)) · |d/dy g<sup>-1</sup>(y)|</p>
+                        <p>Where g<sup>-1</sup> is the inverse function of g.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Convolution and MGFs</div>
+                        <p>If X and Y are independent random variables with moment generating functions M<sub>X</sub> and M<sub>Y</sub>, then the moment generating function of Z = X + Y is:</p>
+                        <p>M<sub>Z</sub>(t) = M<sub>X</sub>(t) · M<sub>Y</sub>(t)</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Sum of Independent Normal Random Variables</div>
+                        <div class="math-block">
+                            If X ~ N(μ<sub>X</sub>, σ<sub>X</sub><sup>2</sup>) and Y ~ N(μ<sub>Y</sub>, σ<sub>Y</sub><sup>2</sup>) are independent, then:
+                        </div>
+                        <div class="math-block">
+                            X + Y ~ N(μ<sub>X</sub> + μ<sub>Y</sub>, σ<sub>X</sub><sup>2</sup> + σ<sub>Y</sub><sup>2</sup>)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Linear Transformation of a Random Variable</div>
+                        <div class="math-block">
+                            If X has PDF f<sub>X</sub> and Y = aX + b (a ≠ 0), then:
+                        </div>
+                        <div class="math-block">
+                            f<sub>Y</sub>(y) = (1/|a|) · f<sub>X</sub>((y-b)/a)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Sum of Independent Poisson Random Variables</div>
+                        <div class="math-block">
+                            If X ~ Poisson(λ<sub>1</sub>) and Y ~ Poisson(λ<sub>2</sub>) are independent, then:
+                        </div>
+                        <div class="math-block">
+                            X + Y ~ Poisson(λ<sub>1</sub> + λ<sub>2</sub>)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Convolution of Exponential Random Variables</div>
+                        <div class="math-block">
+                            If X ~ Exp(λ) and Y ~ Exp(λ) are independent, then:
+                        </div>
+                        <div class="math-block">
+                            X + Y ~ Gamma(2, λ)
+                        </div>
+                        <p>More generally, the sum of n independent Exp(λ) random variables follows a Gamma(n, λ) distribution.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

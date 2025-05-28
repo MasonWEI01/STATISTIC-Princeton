@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 9: Tools: Expectation - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 9: Tools: Expectation (工具：期望)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Expected Value</div>
+                        <p>The expected value (or mean) of a random variable X, denoted by E[X], is:</p>
+                        <p>For discrete random variables: E[X] = ∑<sub>x</sub> x · p<sub>X</sub>(x)</p>
+                        <p>For continuous random variables: E[X] = ∫<sub>-∞</sub><sup>∞</sup> x · f<sub>X</sub>(x) dx</p>
+                        <p>随机变量X的期望值（或均值），记为E[X]，是X的所有可能值的加权平均，其中权重是相应的概率。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Variance</div>
+                        <p>The variance of a random variable X, denoted by Var(X) or σ<sub>X</sub><sup>2</sup>, is:</p>
+                        <p>Var(X) = E[(X - E[X])²] = E[X²] - (E[X])²</p>
+                        <p>随机变量X的方差，记为Var(X)或σ<sub>X</sub><sup>2</sup>，是X与其期望值之差的平方的期望值。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Standard Deviation</div>
+                        <p>The standard deviation of a random variable X, denoted by σ<sub>X</sub>, is the square root of the variance:</p>
+                        <p>σ<sub>X</sub> = √Var(X)</p>
+                        <p>随机变量X的标准差，记为σ<sub>X</sub>，是方差的平方根。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Moment</div>
+                        <p>The n-th moment of a random variable X is defined as:</p>
+                        <p>E[X<sup>n</sup>]</p>
+                        <p>随机变量X的n阶矩定义为X的n次方的期望值。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Moment Generating Function</div>
+                        <p>The moment generating function (MGF) of a random variable X is defined as:</p>
+                        <p>M<sub>X</sub>(t) = E[e<sup>tX</sup>]</p>
+                        <p>随机变量X的矩母函数定义为e<sup>tX</sup>的期望值。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Linearity of Expectation</div>
+                        <p>For any random variables X and Y, and any constants a and b:</p>
+                        <p>E[aX + bY] = aE[X] + bE[X]</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Variance of Linear Combinations</div>
+                        <p>For independent random variables X and Y, and any constants a and b:</p>
+                        <p>Var(aX + bY) = a²Var(X) + b²Var(Y)</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Covariance</div>
+                        <p>The covariance of two random variables X and Y is defined as:</p>
+                        <p>Cov(X,Y) = E[(X - E[X])(Y - E[Y])] = E[XY] - E[X]E[Y]</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of MGF</div>
+                        <p>If M<sub>X</sub>(t) is the moment generating function of X, then:</p>
+                        <ol>
+                            <li>M<sub>X</sub>(0) = 1</li>
+                            <li>The n-th derivative of M<sub>X</sub>(t) evaluated at t=0 gives the n-th moment of X:
+                                <p>M<sub>X</sub><sup>(n)</sup>(0) = E[X<sup>n</sup>]</p>
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Expected Value of a Function of a Random Variable</div>
+                        <div class="math-block">
+                            E[g(X)] = ∑<sub>x</sub> g(x) · p<sub>X</sub>(x) (discrete case)
+                        </div>
+                        <div class="math-block">
+                            E[g(X)] = ∫<sub>-∞</sub><sup>∞</sup> g(x) · f<sub>X</sub>(x) dx (continuous case)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Chebyshev's Inequality</div>
+                        <div class="math-block">
+                            P(|X - E[X]| ≥ kσ<sub>X</sub>) ≤ 1/k²
+                        </div>
+                        <p>Where k > 0 and σ<sub>X</sub> is the standard deviation of X.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Correlation Coefficient</div>
+                        <div class="math-block">
+                            ρ<sub>X,Y</sub> = Cov(X,Y)/(σ<sub>X</sub>σ<sub>Y</sub>)
+                        </div>
+                        <p>Where σ<sub>X</sub> and σ<sub>Y</sub> are the standard deviations of X and Y, respectively.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Law of Total Expectation</div>
+                        <div class="math-block">
+                            E[X] = E[E[X|Y]]
+                        </div>
+                        <p>Where E[X|Y] is the conditional expectation of X given Y.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

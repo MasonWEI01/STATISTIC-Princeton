@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Discrete Random Variables - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 7: Discrete Random Variables (离散型随机变量)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Random Variable</div>
+                        <p>A random variable is a function that assigns a real number to each outcome in the sample space of a random experiment.</p>
+                        <p>随机变量是一个函数，它将随机试验的样本空间中的每个结果分配一个实数。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Probability Mass Function (PMF)</div>
+                        <p>For a discrete random variable X, the probability mass function p<sub>X</sub>(x) gives the probability that X takes on the value x:</p>
+                        <p>p<sub>X</sub>(x) = P(X = x)</p>
+                        <p>对于离散型随机变量X，概率质量函数p<sub>X</sub>(x)给出X取值为x的概率。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Cumulative Distribution Function (CDF)</div>
+                        <p>The cumulative distribution function F<sub>X</sub>(x) of a random variable X is defined as:</p>
+                        <p>F<sub>X</sub>(x) = P(X ≤ x)</p>
+                        <p>随机变量X的累积分布函数F<sub>X</sub>(x)定义为X不大于x的概率。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of PMF</div>
+                        <p>For any discrete random variable X with probability mass function p<sub>X</sub>(x):</p>
+                        <ol>
+                            <li>p<sub>X</sub>(x) ≥ 0 for all x</li>
+                            <li>∑<sub>x</sub> p<sub>X</sub>(x) = 1, where the sum is over all possible values of X</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Relationship between PMF and CDF</div>
+                        <p>For a discrete random variable X:</p>
+                        <p>F<sub>X</sub>(x) = ∑<sub>t≤x</sub> p<sub>X</sub>(t)</p>
+                        <p>Where the sum is over all possible values t of X such that t ≤ x.</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Expected Value of a Discrete Random Variable</div>
+                        <div class="math-block">
+                            E[X] = ∑<sub>x</sub> x · p<sub>X</sub>(x)
+                        </div>
+                        <p>Where the sum is over all possible values x of X.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Variance of a Discrete Random Variable</div>
+                        <div class="math-block">
+                            Var(X) = E[(X - E[X])²] = E[X²] - (E[X])²
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Bernoulli Distribution PMF</div>
+                        <div class="math-block">
+                            p<sub>X</sub>(x) = p<sup>x</sup>(1-p)<sup>1-x</sup> for x ∈ {0,1}
+                        </div>
+                        <p>Where p is the probability of success.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Binomial Distribution PMF</div>
+                        <div class="math-block">
+                            p<sub>X</sub>(x) = (n choose x) p<sup>x</sup>(1-p)<sup>n-x</sup> for x ∈ {0,1,2,...,n}
+                        </div>
+                        <p>Where n is the number of trials and p is the probability of success in each trial.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Geometric Distribution PMF</div>
+                        <div class="math-block">
+                            p<sub>X</sub>(x) = (1-p)<sup>x-1</sup>p for x ∈ {1,2,3,...}
+                        </div>
+                        <p>Where p is the probability of success in each trial.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Poisson Distribution PMF</div>
+                        <div class="math-block">
+                            p<sub>X</sub>(x) = e<sup>-λ</sup>λ<sup>x</sup>/x! for x ∈ {0,1,2,...}
+                        </div>
+                        <p>Where λ is the average rate of occurrence.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

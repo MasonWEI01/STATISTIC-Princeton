@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8: Continuous Random Variables - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 8: Continuous Random Variables (连续型随机变量)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Continuous Random Variable</div>
+                        <p>A continuous random variable is a random variable that can take on any value in a continuous range (interval) of values.</p>
+                        <p>连续型随机变量是一种可以取连续范围（区间）内任意值的随机变量。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Probability Density Function (PDF)</div>
+                        <p>For a continuous random variable X, the probability density function f<sub>X</sub>(x) is a function such that:</p>
+                        <p>P(a ≤ X ≤ b) = ∫<sub>a</sub><sup>b</sup> f<sub>X</sub>(x) dx</p>
+                        <p>对于连续型随机变量X，概率密度函数f<sub>X</sub>(x)是一个函数，使得X落在区间[a,b]内的概率等于f<sub>X</sub>(x)在该区间上的积分。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Cumulative Distribution Function (CDF)</div>
+                        <p>The cumulative distribution function F<sub>X</sub>(x) of a continuous random variable X is defined as:</p>
+                        <p>F<sub>X</sub>(x) = P(X ≤ x) = ∫<sub>-∞</sub><sup>x</sup> f<sub>X</sub>(t) dt</p>
+                        <p>连续型随机变量X的累积分布函数F<sub>X</sub>(x)定义为X不大于x的概率，等于概率密度函数在负无穷到x的积分。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of PDF</div>
+                        <p>For any continuous random variable X with probability density function f<sub>X</sub>(x):</p>
+                        <ol>
+                            <li>f<sub>X</sub>(x) ≥ 0 for all x</li>
+                            <li>∫<sub>-∞</sub><sup>∞</sup> f<sub>X</sub>(x) dx = 1</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Relationship between PDF and CDF</div>
+                        <p>For a continuous random variable X:</p>
+                        <p>f<sub>X</sub>(x) = d/dx F<sub>X</sub>(x)</p>
+                        <p>That is, the probability density function is the derivative of the cumulative distribution function.</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Expected Value of a Continuous Random Variable</div>
+                        <div class="math-block">
+                            E[X] = ∫<sub>-∞</sub><sup>∞</sup> x · f<sub>X</sub>(x) dx
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Variance of a Continuous Random Variable</div>
+                        <div class="math-block">
+                            Var(X) = E[(X - E[X])²] = ∫<sub>-∞</sub><sup>∞</sup> (x - E[X])² · f<sub>X</sub>(x) dx
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Uniform Distribution PDF</div>
+                        <div class="math-block">
+                            f<sub>X</sub>(x) = 1/(b-a) for x ∈ [a,b], 0 otherwise
+                        </div>
+                        <p>Where a and b are the minimum and maximum values of the distribution.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Normal Distribution PDF</div>
+                        <div class="math-block">
+                            f<sub>X</sub>(x) = (1/√(2πσ²)) · e<sup>-(x-μ)²/(2σ²)</sup>
+                        </div>
+                        <p>Where μ is the mean and σ² is the variance.</p>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Exponential Distribution PDF</div>
+                        <div class="math-block">
+                            f<sub>X</sub>(x) = λe<sup>-λx</sup> for x ≥ 0, 0 otherwise
+                        </div>
+                        <p>Where λ > 0 is the rate parameter.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

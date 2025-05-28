@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11: Tools: Differential Identities - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 11: Tools: Differential Identities (工具：微分恒等式)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Differential Identity</div>
+                        <p>A differential identity is an equation that relates a function to its derivatives.</p>
+                        <p>微分恒等式是将函数与其导数相关联的等式。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Characteristic Function</div>
+                        <p>The characteristic function of a random variable X is defined as:</p>
+                        <p>φ<sub>X</sub>(t) = E[e<sup>itX</sup>] = ∫<sub>-∞</sub><sup>∞</sup> e<sup>itx</sup>f<sub>X</sub>(x) dx</p>
+                        <p>Where i is the imaginary unit and f<sub>X</sub> is the PDF of X.</p>
+                        <p>随机变量X的特征函数定义为上述期望值或积分。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Cumulant Generating Function</div>
+                        <p>The cumulant generating function of a random variable X is defined as:</p>
+                        <p>K<sub>X</sub>(t) = log(M<sub>X</sub>(t))</p>
+                        <p>Where M<sub>X</sub>(t) is the moment generating function of X.</p>
+                        <p>随机变量X的累积量生成函数定义为其矩母函数的自然对数。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Derivatives of Characteristic Function</div>
+                        <p>If φ<sub>X</sub>(t) is the characteristic function of X, then:</p>
+                        <ol>
+                            <li>φ<sub>X</sub>(0) = 1</li>
+                            <li>The n-th derivative of φ<sub>X</sub>(t) evaluated at t=0 gives the n-th moment of X multiplied by i<sup>n</sup>:
+                                <p>φ<sub>X</sub><sup>(n)</sup>(0) = i<sup>n</sup>E[X<sup>n</sup>]</p>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Inversion Formula</div>
+                        <p>If φ<sub>X</sub>(t) is the characteristic function of a continuous random variable X with PDF f<sub>X</sub>, then:</p>
+                        <p>f<sub>X</sub>(x) = (1/2π) ∫<sub>-∞</sub><sup>∞</sup> e<sup>-itx</sup>φ<sub>X</sub>(t) dt</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Derivatives of Cumulant Generating Function</div>
+                        <p>If K<sub>X</sub>(t) is the cumulant generating function of X, then:</p>
+                        <ol>
+                            <li>K<sub>X</sub>(0) = 0</li>
+                            <li>K<sub>X</sub>'(0) = E[X]</li>
+                            <li>K<sub>X</sub>''(0) = Var(X)</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Characteristic Function of Sum of Independent Random Variables</div>
+                        <p>If X and Y are independent random variables with characteristic functions φ<sub>X</sub> and φ<sub>Y</sub>, then the characteristic function of Z = X + Y is:</p>
+                        <p>φ<sub>Z</sub>(t) = φ<sub>X</sub>(t) · φ<sub>Y</sub>(t)</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Characteristic Function of Normal Distribution</div>
+                        <div class="math-block">
+                            If X ~ N(μ, σ²), then:
+                        </div>
+                        <div class="math-block">
+                            φ<sub>X</sub>(t) = exp(iμt - σ²t²/2)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Characteristic Function of Exponential Distribution</div>
+                        <div class="math-block">
+                            If X ~ Exp(λ), then:
+                        </div>
+                        <div class="math-block">
+                            φ<sub>X</sub>(t) = λ/(λ - it)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Characteristic Function of Poisson Distribution</div>
+                        <div class="math-block">
+                            If X ~ Poisson(λ), then:
+                        </div>
+                        <div class="math-block">
+                            φ<sub>X</sub>(t) = exp(λ(e<sup>it</sup> - 1))
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Cumulant Generating Function of Normal Distribution</div>
+                        <div class="math-block">
+                            If X ~ N(μ, σ²), then:
+                        </div>
+                        <div class="math-block">
+                            K<sub>X</sub>(t) = μt + σ²t²/2
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
