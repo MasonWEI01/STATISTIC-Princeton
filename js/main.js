@@ -30,12 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('active');
             
             // Expand parent if in sublist
-            const parentLi = link.closest('li.nav-item');
-            if (parentLi && parentLi.parentElement.classList.contains('nav-sublist')) {
-                const parentExpander = parentLi.parentElement.previousElementSibling;
-                if (parentExpander && parentExpander.classList.contains('nav-expander')) {
-                    parentExpander.classList.add('active');
-                    parentLi.parentElement.style.display = 'block';
+            let currentElement = link.closest('li.nav-item');
+            while (currentElement) {
+                const parentUl = currentElement.parentElement;
+                if (parentUl && parentUl.classList.contains('nav-sublist')) {
+                    const parentExpander = parentUl.previousElementSibling;
+                    if (parentExpander && parentExpander.classList.contains('nav-expander')) {
+                        parentExpander.classList.add('active');
+                        parentUl.style.display = 'block';
+                    }
+                    currentElement = parentUl.closest('li.nav-item'); // Move up to the parent li of the sublist
+                } else {
+                    currentElement = null; // Stop if not in a sublist or no parent li
                 }
             }
         }
