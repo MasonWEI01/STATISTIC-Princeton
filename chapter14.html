@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 14: Bivariate Random Variables - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 14: Bivariate Random Variables (二维随机变量)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Bivariate Random Variable</div>
+                        <p>A bivariate random variable (X,Y) is a pair of random variables that maps each element in the sample space to a point in the two-dimensional real plane.</p>
+                        <p>二维随机变量(X,Y)是一对随机变量，它将样本空间中的每个元素映射到二维实数平面上的点。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Joint Distribution Function</div>
+                        <p>The joint distribution function of a bivariate random variable (X,Y) is defined as:</p>
+                        <p>F(x,y) = P(X ≤ x, Y ≤ y)</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Joint Probability Mass Function</div>
+                        <p>For a discrete bivariate random variable (X,Y), the joint probability mass function is defined as:</p>
+                        <p>p(x,y) = P(X = x, Y = y)</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Joint Probability Density Function</div>
+                        <p>For a continuous bivariate random variable (X,Y), the joint probability density function f(x,y) satisfies:</p>
+                        <p>P((X,Y) ∈ A) = ∫∫<sub>A</sub> f(x,y) dx dy</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Marginal Distribution</div>
+                        <p>The marginal distribution of X is the distribution of X without regard to Y. For discrete case, the marginal probability mass function of X is:</p>
+                        <p>p<sub>X</sub>(x) = ∑<sub>y</sub> p(x,y)</p>
+                        <p>For continuous case, the marginal probability density function of X is:</p>
+                        <p>f<sub>X</sub>(x) = ∫ f(x,y) dy</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Conditional Distribution</div>
+                        <p>The conditional distribution of X given Y=y describes the probability distribution of X when Y takes a specific value. For discrete case, the conditional probability mass function is:</p>
+                        <p>p<sub>X|Y</sub>(x|y) = p(x,y)/p<sub>Y</sub>(y)</p>
+                        <p>For continuous case, the conditional probability density function is:</p>
+                        <p>f<sub>X|Y</sub>(x|y) = f(x,y)/f<sub>Y</sub>(y)</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Independence</div>
+                        <p>Random variables X and Y are independent if for all x and y, F(x,y) = F<sub>X</sub>(x)F<sub>Y</sub>(y). Equivalently, for discrete case, if p(x,y) = p<sub>X</sub>(x)p<sub>Y</sub>(y); for continuous case, if f(x,y) = f<sub>X</sub>(x)f<sub>Y</sub>(y).</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Necessary and Sufficient Condition for Independence</div>
+                        <p>Random variables X and Y are independent if and only if their joint distribution function can be expressed as the product of their marginal distribution functions.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of Bivariate Normal Distribution</div>
+                        <p>If (X,Y) follows a bivariate normal distribution, then:</p>
+                        <ol>
+                            <li>The marginal distributions of X and Y are univariate normal distributions</li>
+                            <li>X and Y are independent if and only if their covariance is zero</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of Conditional Expectation</div>
+                        <p>E[X|Y] is a function of Y, and E[E[X|Y]] = E[X]</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Bivariate Normal Probability Density Function</div>
+                        <div class="math-block">
+                            The probability density function of a bivariate normal distribution (X,Y) is:
+                        </div>
+                        <div class="math-block">
+                            f(x,y) = (1/(2πσ<sub>X</sub>σ<sub>Y</sub>√(1-ρ²))) * exp{-1/(2(1-ρ²))[(x-μ<sub>X</sub>)²/σ<sub>X</sub>² - 2ρ(x-μ<sub>X</sub>)(y-μ<sub>Y</sub>)/(σ<sub>X</sub>σ<sub>Y</sub>) + (y-μ<sub>Y</sub>)²/σ<sub>Y</sub>²]}
+                        </div>
+                        <div class="math-block">
+                            where μ<sub>X</sub> and μ<sub>Y</sub> are means, σ<sub>X</sub> and σ<sub>Y</sub> are standard deviations, and ρ is the correlation coefficient.
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Covariance</div>
+                        <div class="math-block">
+                            Cov(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY] - E[X]E[Y]
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Correlation Coefficient</div>
+                        <div class="math-block">
+                            ρ = Cov(X,Y)/(σ<sub>X</sub>σ<sub>Y</sub>)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Conditional Expectation</div>
+                        <div class="math-block">
+                            For discrete case: E[X|Y=y] = ∑<sub>x</sub> x·p<sub>X|Y</sub>(x|y)
+                        </div>
+                        <div class="math-block">
+                            For continuous case: E[X|Y=y] = ∫ x·f<sub>X|Y</sub>(x|y) dx
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

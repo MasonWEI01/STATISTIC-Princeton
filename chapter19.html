@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 19: Law of Large Numbers - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 19: Law of Large Numbers (大数定律)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Law of Large Numbers</div>
+                        <p>The Law of Large Numbers describes the phenomenon that as the sample size increases, the sample mean converges to the population expected value.</p>
+                        <p>大数定律描述了当样本量增大时，样本均值收敛到总体期望值的现象。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Convergence in Probability</div>
+                        <p>A sequence of random variables {Xn} is said to converge in probability to a random variable X if for any ε > 0, lim(n→∞) P(|Xn - X| > ε) = 0. This is denoted as Xn →p X.</p>
+                        <p>如果对于任意ε > 0，有lim(n→∞) P(|Xn - X| > ε) = 0，则称随机变量序列{Xn}依概率收敛到随机变量X，记为Xn →p X。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Almost Sure Convergence</div>
+                        <p>A sequence of random variables {Xn} is said to converge almost surely to a random variable X if P(lim(n→∞) Xn = X) = 1. This is denoted as Xn →a.s. X.</p>
+                        <p>如果P(lim(n→∞) Xn = X) = 1，则称随机变量序列{Xn}几乎必然收敛到随机变量X，记为Xn →a.s. X。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Mean Square Convergence</div>
+                        <p>A sequence of random variables {Xn} is said to converge in mean square to a random variable X if lim(n→∞) E[(Xn - X)²] = 0. This is denoted as Xn →m.s. X.</p>
+                        <p>如果lim(n→∞) E[(Xn - X)²] = 0，则称随机变量序列{Xn}均方收敛到随机变量X，记为Xn →m.s. X。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Weak Law of Large Numbers (Khinchin's Theorem)</div>
+                        <p>Let X₁, X₂, ..., Xₙ be independent and identically distributed random variables with mean μ. Then the sample mean X̄ₙ = (X₁ + X₂ + ... + Xₙ)/n converges in probability to μ, i.e., for any ε > 0:</p>
+                        <p>lim(n→∞) P(|X̄ₙ - μ| > ε) = 0</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Strong Law of Large Numbers (Kolmogorov's Theorem)</div>
+                        <p>Let X₁, X₂, ..., Xₙ be independent and identically distributed random variables with mean μ. Then the sample mean X̄ₙ = (X₁ + X₂ + ... + Xₙ)/n converges almost surely to μ, i.e.:</p>
+                        <p>P(lim(n→∞) X̄ₙ = μ) = 1</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Chebyshev's Inequality</div>
+                        <p>For any random variable X and any positive number ε:</p>
+                        <p>P(|X - E[X]| ≥ ε) ≤ Var(X)/ε²</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Markov's Inequality</div>
+                        <p>For any non-negative random variable X and any positive number a:</p>
+                        <p>P(X ≥ a) ≤ E[X]/a</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Chebyshev's Law of Large Numbers</div>
+                        <div class="math-block">
+                            If X₁, X₂, ..., Xₙ are independent random variables with means μᵢ and variances σᵢ², and there exists a constant C such that σᵢ² ≤ C for all i, then:
+                        </div>
+                        <div class="math-block">
+                            (X₁ + X₂ + ... + Xₙ - (μ₁ + μ₂ + ... + μₙ))/n →p 0
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Bernoulli's Law of Large Numbers</div>
+                        <div class="math-block">
+                            If X₁, X₂, ..., Xₙ are independent and identically distributed Bernoulli random variables with success probability p, then the sample proportion X̄ₙ converges in probability to p:
+                        </div>
+                        <div class="math-block">
+                            X̄ₙ →p p
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Rate of Convergence in Law of Large Numbers</div>
+                        <div class="math-block">
+                            Under certain conditions, the probability of |X̄ₙ - μ| > ε decays exponentially with n:
+                        </div>
+                        <div class="math-block">
+                            P(|X̄ₙ - μ| > ε) ≤ 2exp(-2nε²) (Hoeffding's inequality)
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

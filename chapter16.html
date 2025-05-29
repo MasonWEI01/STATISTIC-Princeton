@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 16: Chi-Square Distribution - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 16: Chi-Square Distribution (卡方分布)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Chi-Square Distribution</div>
+                        <p>If Z₁, Z₂, ..., Zₙ are n independent standard normal random variables, then the random variable X = Z₁² + Z₂² + ... + Zₙ² follows a chi-square distribution with n degrees of freedom, denoted as X ~ χ²(n).</p>
+                        <p>如果Z₁, Z₂, ..., Zₙ是n个独立的标准正态随机变量，则随机变量X = Z₁² + Z₂² + ... + Zₙ²服从自由度为n的卡方分布，记为X ~ χ²(n)。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Non-central Chi-Square Distribution</div>
+                        <p>If Z₁, Z₂, ..., Zₙ are n independent normal random variables with E[Zᵢ] = μᵢ and Var(Zᵢ) = 1, then the random variable X = Z₁² + Z₂² + ... + Zₙ² follows a non-central chi-square distribution with n degrees of freedom and non-centrality parameter λ = μ₁² + μ₂² + ... + μₙ², denoted as X ~ χ²(n,λ).</p>
+                        <p>如果Z₁, Z₂, ..., Zₙ是n个独立的正态随机变量，其中E[Zᵢ] = μᵢ，Var(Zᵢ) = 1，则随机变量X = Z₁² + Z₂² + ... + Zₙ²服从非中心参数λ = μ₁² + μ₂² + ... + μₙ²的非中心卡方分布，记为X ~ χ²(n,λ)。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Chi-Square Test</div>
+                        <p>The chi-square test is a statistical hypothesis test used to determine whether there is a significant difference between observed frequencies and expected frequencies.</p>
+                        <p>卡方检验是一种统计假设检验方法，用于确定观察到的频率与理论频率之间的差异是否显著。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Additivity of Chi-Square Distribution</div>
+                        <p>If X ~ χ²(n) and Y ~ χ²(m) are independent random variables, then X + Y ~ χ²(n+m).</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Relation Between Chi-Square and Gamma Distributions</div>
+                        <p>A chi-square distribution with n degrees of freedom is equivalent to a gamma distribution with shape parameter α = n/2 and scale parameter β = 2.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Distribution of Square of Standard Normal</div>
+                        <p>If Z ~ N(0,1), then Z² ~ χ²(1).</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Distribution of Sample Variance</div>
+                        <p>If X₁, X₂, ..., Xₙ is an independent and identically distributed random sample from a normal distribution N(μ,σ²), then (n-1)S²/σ² ~ χ²(n-1), where S² is the sample variance.</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Probability Density Function of Chi-Square Distribution</div>
+                        <div class="math-block">
+                            The probability density function of a chi-square distribution with n degrees of freedom is:
+                        </div>
+                        <div class="math-block">
+                            f(x) = (1/(2^(n/2)Γ(n/2)))x^(n/2-1)e^(-x/2), where x > 0
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Expected Value and Variance of Chi-Square Distribution</div>
+                        <div class="math-block">
+                            If X ~ χ²(n), then:
+                        </div>
+                        <div class="math-block">
+                            E[X] = n
+                        </div>
+                        <div class="math-block">
+                            Var(X) = 2n
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Moment Generating Function of Chi-Square Distribution</div>
+                        <div class="math-block">
+                            If X ~ χ²(n), then its moment generating function is:
+                        </div>
+                        <div class="math-block">
+                            M_X(t) = (1-2t)^(-n/2), where t < 1/2
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Probability Density Function of Non-central Chi-Square Distribution</div>
+                        <div class="math-block">
+                            The probability density function of a non-central chi-square distribution with n degrees of freedom and non-centrality parameter λ is:
+                        </div>
+                        <div class="math-block">
+                            f(x) = e^(-λ/2)∑_{j=0}^∞ (λ/2)^j/j! · (1/(2^((n+2j)/2)Γ((n+2j)/2)))x^((n+2j)/2-1)e^(-x/2), where x > 0
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

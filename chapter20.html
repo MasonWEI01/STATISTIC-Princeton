@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 20: Statistical Estimation - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 20: Statistical Estimation (统计估计)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Parameter Estimation</div>
+                        <p>Parameter estimation is the process of inferring the value of a population parameter based on sample data.</p>
+                        <p>参数估计是根据样本数据推断总体参数值的过程。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Point Estimation</div>
+                        <p>Point estimation provides a single numerical value as an estimate of a population parameter.</p>
+                        <p>点估计是用样本统计量给出总体参数的单一数值估计。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Interval Estimation</div>
+                        <p>Interval estimation provides a range of values within which the population parameter is expected to lie with a certain confidence level.</p>
+                        <p>区间估计是给出一个区间，使得总体参数以一定的置信度落在这个区间内。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Estimator</div>
+                        <p>An estimator is a statistic used to estimate a population parameter, which is a function of the sample data.</p>
+                        <p>估计量是用于估计总体参数的统计量，是样本的函数。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Unbiased Estimator</div>
+                        <p>An estimator is unbiased if its expected value equals the parameter being estimated.</p>
+                        <p>如果估计量的期望等于被估计的参数，则称该估计量是无偏的。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Consistent Estimator</div>
+                        <p>An estimator is consistent if it converges in probability to the parameter being estimated as the sample size increases.</p>
+                        <p>如果估计量随着样本量增加而依概率收敛到被估计的参数，则称该估计量是一致的。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Efficient Estimator</div>
+                        <p>Among all unbiased estimators, the one with the smallest variance is called an efficient estimator.</p>
+                        <p>在所有无偏估计量中，方差最小的估计量称为有效估计量。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of Sample Mean</div>
+                        <p>The sample mean X̄ is an unbiased estimator of the population mean μ, and when the sample is from a distribution with finite variance, X̄ is also a consistent estimator of μ.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of Sample Variance</div>
+                        <p>The corrected sample variance S² = Σ(Xᵢ - X̄)²/(n-1) is an unbiased estimator of the population variance σ².</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Properties of Maximum Likelihood Estimator</div>
+                        <p>Under regularity conditions, maximum likelihood estimators are consistent and asymptotically normal.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Cramér-Rao Lower Bound</div>
+                        <p>The variance of any unbiased estimator is bounded below by the inverse of the Fisher information.</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Maximum Likelihood Estimation</div>
+                        <div class="math-block">
+                            The maximum likelihood estimate is the value of θ that maximizes the likelihood function L(θ;x₁,x₂,...,xₙ) = f(x₁,x₂,...,xₙ|θ).
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Method of Moments</div>
+                        <div class="math-block">
+                            Method of moments estimation equates sample moments to the corresponding population moments to estimate parameters.
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Confidence Interval</div>
+                        <div class="math-block">
+                            A (1-α) confidence interval for the mean μ is:
+                        </div>
+                        <div class="math-block">
+                            X̄ ± z_(α/2)·σ/√n (when σ is known) or X̄ ± t_(α/2,n-1)·S/√n (when σ is unknown)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Fisher Information</div>
+                        <div class="math-block">
+                            The Fisher information I(θ) is defined as:
+                        </div>
+                        <div class="math-block">
+                            I(θ) = E[(∂/∂θ ln f(X|θ))²]
+                        </div>
+                        <div class="math-block">
+                            where f(x|θ) is the probability density function.
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Asymptotic Variance</div>
+                        <div class="math-block">
+                            Under regularity conditions, the asymptotic distribution of a maximum likelihood estimator θ̂ is:
+                        </div>
+                        <div class="math-block">
+                            √n(θ̂ - θ) → N(0, 1/I(θ))
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

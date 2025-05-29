@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 17: t-Distribution - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 17: t-Distribution (t分布)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: t-Distribution</div>
+                        <p>If Z is a standard normal random variable, V is a chi-square random variable with n degrees of freedom, and Z and V are independent, then the random variable T = Z/√(V/n) follows a t-distribution with n degrees of freedom, denoted as T ~ t(n).</p>
+                        <p>如果Z是标准正态随机变量，V是自由度为n的卡方随机变量，且Z和V相互独立，则随机变量T = Z/√(V/n)服从自由度为n的t分布，记为T ~ t(n)。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Student's t-Distribution</div>
+                        <p>Student's t-distribution is another name for the t-distribution, named after William Sealy Gosset who published under the pseudonym "Student".</p>
+                        <p>学生t分布是t分布的另一种称呼，由William Sealy Gosset（笔名"Student"）首次提出。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: t-Test</div>
+                        <p>The t-test is a statistical hypothesis test used to determine if there is a significant difference between the means of two groups, which may be related in certain features.</p>
+                        <p>t检验是一种统计假设检验方法，用于在样本量小且总体标准差未知的情况下，检验样本均值与总体均值的差异是否显著。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Symmetry of t-Distribution</div>
+                        <p>The t-distribution is symmetric about the origin, i.e., if T ~ t(n), then -T also follows t(n) distribution.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Limiting Distribution of t-Distribution</div>
+                        <p>As the degrees of freedom n approaches infinity, the t(n) distribution approaches the standard normal distribution N(0,1).</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: One-Sample t-Test</div>
+                        <p>If X₁, X₂, ..., Xₙ is an independent and identically distributed random sample from a normal distribution N(μ,σ²), then the statistic T = (X̄ - μ)/(S/√n) follows a t-distribution with n-1 degrees of freedom, where X̄ is the sample mean and S is the sample standard deviation.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Two-Sample t-Test</div>
+                        <p>If two independent samples are from normal distributions N(μ₁,σ²) and N(μ₂,σ²) respectively, then under the equal variance assumption, the statistic T = (X̄₁ - X̄₂)/√(S_p²(1/n₁ + 1/n₂)) follows a t-distribution with n₁+n₂-2 degrees of freedom, where S_p² is the pooled sample variance.</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Probability Density Function of t-Distribution</div>
+                        <div class="math-block">
+                            The probability density function of a t-distribution with n degrees of freedom is:
+                        </div>
+                        <div class="math-block">
+                            f(t) = Γ((n+1)/2)/(√(nπ)·Γ(n/2))·(1+t²/n)^(-(n+1)/2)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Expected Value and Variance of t-Distribution</div>
+                        <div class="math-block">
+                            If T ~ t(n) and n > 1, then:
+                        </div>
+                        <div class="math-block">
+                            E[T] = 0 (when n > 1)
+                        </div>
+                        <div class="math-block">
+                            Var(T) = n/(n-2) (when n > 2)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Confidence Interval Using t-Distribution</div>
+                        <div class="math-block">
+                            A (1-α) confidence interval for the population mean μ is:
+                        </div>
+                        <div class="math-block">
+                            X̄ ± t_(α/2,n-1)·S/√n
+                        </div>
+                        <div class="math-block">
+                            where t_(α/2,n-1) is the α/2 quantile of the t-distribution with n-1 degrees of freedom.
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Welch-Satterthwaite Equation</div>
+                        <div class="math-block">
+                            In the two-sample t-test with unequal variances, the approximate degrees of freedom is:
+                        </div>
+                        <div class="math-block">
+                            ν ≈ (s₁²/n₁ + s₂²/n₂)²/[(s₁²/n₁)²/(n₁-1) + (s₂²/n₂)²/(n₂-1)]
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

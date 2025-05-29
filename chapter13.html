@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 13: Random Walks - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 13: Random Walks (随机游走)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Random Walk</div>
+                        <p>A random walk is a special type of Markov process where the system moves randomly in some direction at each step.</p>
+                        <p>随机游走是一种特殊的马尔可夫过程，其中系统在每一步随机地向某个方向移动。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Simple Symmetric Random Walk</div>
+                        <p>A one-dimensional random walk where at each step, the walker moves one unit to the left or right with equal probability.</p>
+                        <p>在一维空间中，每一步等概率地向左或向右移动一个单位距离的随机游走。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Drunkard's Walk</div>
+                        <p>A drunkard's walk is a colorful description of a simple random walk, representing a drunk person who takes random steps in different directions.</p>
+                        <p>醉汉游走是简单随机游走的一种形象化描述，表示一个醉汉每一步随机地向某个方向移动。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Absorbing Barrier</div>
+                        <p>Special states in a random walk that, once reached, stop the walking process.</p>
+                        <p>随机游走中的某些状态，一旦到达就停止游走过程的特殊状态。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Reflecting Barrier</div>
+                        <p>Special states in a random walk that, once reached, reflect the walker back.</p>
+                        <p>随机游走中的某些状态，到达后会被反射回来的特殊状态。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: First Hitting Time</div>
+                        <p>The number of steps needed for a random walk to reach a specific state for the first time.</p>
+                        <p>随机游走首次到达某个特定状态所需的步数。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Recurrence</div>
+                        <p>A random walk is recurrent if, starting from the origin, it returns to the origin with probability 1.</p>
+                        <p>如果随机游走从原点出发，以概率1最终会返回原点，则称该随机游走是回归的。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Recurrence of One-Dimensional Simple Symmetric Random Walk</div>
+                        <p>A one-dimensional simple symmetric random walk is recurrent, meaning that starting from the origin, it will eventually return to the origin with probability 1.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Recurrence of Two-Dimensional Simple Symmetric Random Walk</div>
+                        <p>A two-dimensional simple symmetric random walk is also recurrent.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Transience of Three-Dimensional and Higher Simple Symmetric Random Walk</div>
+                        <p>A simple symmetric random walk in three or more dimensions is transient, meaning there is a positive probability that it will never return to the origin.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Gambler's Ruin Problem</div>
+                        <p>In the gambler's ruin problem, if two players have initial fortunes of i and N-i respectively, and win probabilities of p and q=1-p per round, then the probability that player 1 eventually goes bankrupt is:</p>
+                        <p>- If p=q=1/2, then the bankruptcy probability is (N-i)/N</p>
+                        <p>- If p≠q, then the bankruptcy probability is (1-(p/q)^i)/(1-(p/q)^N)</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Expected First Hitting Time</div>
+                        <p>For a one-dimensional simple symmetric random walk, the expected first hitting time from position 0 to position n is n².</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Probability of Return to Origin After 2n Steps</div>
+                        <div class="math-block">
+                            For a one-dimensional simple symmetric random walk, the probability of being at the origin after 2n steps is:
+                        </div>
+                        <div class="math-block">
+                            P(S₂ₙ = 0) = (2n choose n) / 2^(2n)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Probability of Being at Position k After n Steps</div>
+                        <div class="math-block">
+                            For a one-dimensional simple symmetric random walk, the probability of being at position k after n steps is:
+                        </div>
+                        <div class="math-block">
+                            P(Sₙ = k) = 0 (if n+k is odd)
+                        </div>
+                        <div class="math-block">
+                            P(Sₙ = k) = (n choose (n+k)/2) / 2^n (if n+k is even)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Generating Function for Random Walks</div>
+                        <div class="math-block">
+                            For a one-dimensional simple symmetric random walk, the generating function for the position can be used to calculate various probabilities and expected values.
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

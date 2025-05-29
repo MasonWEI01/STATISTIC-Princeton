@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 21: Hypothesis Testing - Princeton Guide to Probability Theory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Princeton Guide to Probability Theory</h2>
+            </div>
+            <div class="nav-title">Table of Contents</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 2: Random Variables</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter7.html" class="nav-link">Chapter 7: Discrete Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter8.html" class="nav-link">Chapter 8: Continuous Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter9.html" class="nav-link">Chapter 9: Tools: Expectation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter10.html" class="nav-link">Chapter 10: Tools: Convolution and Variable Substitution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter11.html" class="nav-link">Chapter 11: Tools: Differential Identities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
+                        <li class="nav-item">
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="glossary.html" class="nav-link">Glossary</a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <header class="header">
+                <button class="menu-toggle">☰</button>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                </div>
+            </header>
+            
+            <div class="chapter-content">
+                <h1>Chapter 21: Hypothesis Testing (假设检验)</h1>
+                
+                <section id="definitions">
+                    <h2>Definitions (定义)</h2>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Statistical Hypothesis</div>
+                        <p>A statistical hypothesis is a statement about a population parameter or distribution that can be tested by statistical tests.</p>
+                        <p>统计假设是关于总体参数或分布的一种陈述，可以被统计检验所验证。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Null Hypothesis</div>
+                        <p>The null hypothesis (H₀) is the hypothesis that the researcher wishes to test, typically representing "no effect" or "no difference".</p>
+                        <p>原假设（零假设）H₀是研究者希望检验的假设，通常表示"无效应"或"无差异"。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Alternative Hypothesis</div>
+                        <p>The alternative hypothesis (H₁) is the hypothesis that is contrary to the null hypothesis, representing "there is an effect" or "there is a difference".</p>
+                        <p>备择假设H₁是与原假设相对的假设，表示"有效应"或"有差异"。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Significance Level</div>
+                        <p>The significance level (α) is the maximum probability of committing a Type I error that the researcher is willing to accept.</p>
+                        <p>显著性水平α是研究者愿意接受的犯第一类错误的最大概率。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: p-value</div>
+                        <p>The p-value is the probability of obtaining the observed result or a more extreme result, assuming that the null hypothesis is true.</p>
+                        <p>p值是在原假设为真的条件下，获得观察到的或更极端结果的概率。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Test Statistic</div>
+                        <p>A test statistic is a statistic calculated from sample data, used to decide whether to reject the null hypothesis.</p>
+                        <p>检验统计量是从样本数据计算得到的统计量，用于决定是否拒绝原假设。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Type I Error</div>
+                        <p>A Type I error occurs when the null hypothesis is true but is incorrectly rejected.</p>
+                        <p>第一类错误是指原假设为真但被错误地拒绝的情况。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Type II Error</div>
+                        <p>A Type II error occurs when the null hypothesis is false but is not rejected.</p>
+                        <p>第二类错误是指原假设为假但未被拒绝的情况。</p>
+                    </div>
+                </section>
+                
+                <section id="theorems">
+                    <h2>Theorems (定理)</h2>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Neyman-Pearson Lemma</div>
+                        <p>In simple hypothesis testing, the most powerful test is based on the likelihood ratio.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Power of a Test</div>
+                        <p>The power of a test is the probability of correctly rejecting the null hypothesis when the alternative hypothesis is true, equal to 1 minus the probability of a Type II error.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Power of t-test</div>
+                        <p>The power of a t-test depends on the sample size, effect size, and significance level.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Wilcoxon Signed-Rank Test</div>
+                        <p>The Wilcoxon signed-rank test is a non-parametric test used to test for differences in the median of paired samples.</p>
+                    </div>
+                </section>
+                
+                <section id="formulas">
+                    <h2>Formulas (公式)</h2>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: z-test Statistic</div>
+                        <div class="math-block">
+                            For testing a mean with known population standard deviation, the z-test statistic is:
+                        </div>
+                        <div class="math-block">
+                            z = (X̄ - μ₀)/(σ/√n)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: t-test Statistic</div>
+                        <div class="math-block">
+                            For testing a mean with unknown population standard deviation, the t-test statistic is:
+                        </div>
+                        <div class="math-block">
+                            t = (X̄ - μ₀)/(S/√n)
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Chi-Square Goodness-of-Fit Test Statistic</div>
+                        <div class="math-block">
+                            χ² = ∑[(Oᵢ - Eᵢ)²/Eᵢ]
+                        </div>
+                        <div class="math-block">
+                            where Oᵢ is the observed frequency and Eᵢ is the expected frequency.
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: F-test Statistic</div>
+                        <div class="math-block">
+                            For comparing two population variances, the F-test statistic is:
+                        </div>
+                        <div class="math-block">
+                            F = S₁²/S₂²
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        <div class="formula-title">Formula: Power Calculation</div>
+                        <div class="math-block">
+                            For a z-test, when the alternative hypothesis is μ = μ₁, the power of the test is:
+                        </div>
+                        <div class="math-block">
+                            1 - Φ(z_(α) - (μ₁ - μ₀)/(σ/√n))
+                        </div>
+                        <div class="math-block">
+                            where Φ is the cumulative distribution function of the standard normal distribution.
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer class="footer">
+                <p>&copy; 2025 Princeton Guide to Probability Theory Interactive Website</p>
+            </footer>
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
