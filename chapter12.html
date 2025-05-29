@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 12: Discrete Distributions - Princeton Guide to Probability Theory</title>
+    <title>Chapter 12: Markov Chains - Princeton Guide to Probability Theory</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Noto+Sans+Mono&display=swap">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -41,12 +41,38 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link nav-expander active">Part 3: Special Distributions</a>
-                    <ul class="nav-sublist" style="display: block;">
+                    <a href="#" class="nav-link nav-expander">Part 3: Advanced Topics</a>
+                    <ul class="nav-sublist">
                         <li class="nav-item">
-                            <a href="chapter12.html" class="nav-link active">Chapter 12: Discrete Distributions</a>
+                            <a href="chapter12.html" class="nav-link">Chapter 12: Markov Chains</a>
                         </li>
-                        <!-- Add more chapters for Part 3 as needed -->
+                        <li class="nav-item">
+                            <a href="chapter13.html" class="nav-link">Chapter 13: Random Walks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter14.html" class="nav-link">Chapter 14: Bivariate Random Variables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter15.html" class="nav-link">Chapter 15: Gamma Function</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter16.html" class="nav-link">Chapter 16: Chi-Square Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter17.html" class="nav-link">Chapter 17: t-Distribution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter18.html" class="nav-link">Chapter 18: Central Limit Theorem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter19.html" class="nav-link">Chapter 19: Law of Large Numbers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter20.html" class="nav-link">Chapter 20: Statistical Estimation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chapter21.html" class="nav-link">Chapter 21: Hypothesis Testing</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -65,86 +91,114 @@
             </header>
             
             <div class="chapter-content">
-                <h1>Chapter 12: Discrete Distributions (离散分布)</h1>
-                <p>This chapter covers several important discrete distributions. Due to the inability to find the specific content from the "Princeton Guide to Probability Theory" via web search, placeholders for seven distributions are provided below. Please replace these with the actual content from the book.</p>
-
+                <h1>Chapter 12: Markov Chains (马尔可夫链)</h1>
+                
                 <section id="definitions">
                     <h2>Definitions (定义)</h2>
+                    
                     <div class="definition">
-                        <div class="definition-title">Definition: Placeholder Definition 1</div>
-                        <p>This is a placeholder for a definition related to discrete distributions. Please update with actual content.</p>
-                        <p>这是一个占位符定义，与离散分布相关。请用实际内容更新。</p>
+                        <div class="definition-title">Definition: Markov Chain</div>
+                        <p>A Markov chain is a random process where the next state's probability distribution depends only on the current state, not on the sequence of states that preceded it.</p>
+                        <p>马尔可夫链是一个随机过程，其中下一个状态的概率分布只依赖于当前状态，而与之前的状态无关。</p>
                     </div>
-                    <!-- Add more definitions as needed -->
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: State Space</div>
+                        <p>The state space is the set of all possible states in a Markov chain.</p>
+                        <p>马尔可夫链中所有可能状态的集合称为状态空间。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Transition Probability</div>
+                        <p>The probability of transitioning from state i to state j, denoted as P(i,j) or p<sub>ij</sub>.</p>
+                        <p>从状态i转移到状态j的概率，记为P(i,j)或p<sub>ij</sub>。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Transition Matrix</div>
+                        <p>A matrix P containing all transition probabilities between states, where P(i,j) represents the probability of transitioning from state i to state j.</p>
+                        <p>包含所有状态间转移概率的矩阵P，其中P(i,j)表示从状态i转移到状态j的概率。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Initial Distribution</div>
+                        <p>The probability distribution of the starting state of a Markov chain.</p>
+                        <p>马尔可夫链起始状态的概率分布。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Stationary Distribution</div>
+                        <p>A probability distribution π is called stationary if it satisfies πP = π, where P is the transition matrix.</p>
+                        <p>如果分布π满足πP = π，则称π为马尔可夫链的平稳分布。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Accessibility</div>
+                        <p>State j is accessible from state i if there exists n ≥ 0 such that the n-step transition probability P<sup>n</sup>(i,j) > 0.</p>
+                        <p>如果存在n≥0使得从状态i到状态j的n步转移概率P<sup>n</sup>(i,j)>0，则称状态j从状态i可达。</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <div class="definition-title">Definition: Irreducibility</div>
+                        <p>A Markov chain is irreducible if any state can be reached from any other state.</p>
+                        <p>如果马尔可夫链中任意两个状态之间都是互相可达的，则称该马尔可夫链是不可约的。</p>
+                    </div>
                 </section>
                 
                 <section id="theorems">
                     <h2>Theorems (定理)</h2>
+                    
                     <div class="theorem">
-                        <div class="theorem-title">Theorem: Placeholder Theorem 1</div>
-                        <p>This is a placeholder for a theorem related to discrete distributions. Please update with actual content.</p>
-                        <p>这是一个占位符定理，与离散分布相关。请用实际内容更新。</p>
+                        <div class="theorem-title">Theorem: Chapman-Kolmogorov Equation</div>
+                        <p>For any states i, j and any n, m ≥ 0:</p>
+                        <p>P<sup>n+m</sup>(i,j) = ∑<sub>k</sub> P<sup>n</sup>(i,k)P<sup>m</sup>(k,j)</p>
                     </div>
-                    <!-- Add more theorems as needed -->
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Existence of Stationary Distribution</div>
+                        <p>For a finite-state, irreducible, aperiodic Markov chain, there exists a unique stationary distribution π.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Limiting Theorem</div>
+                        <p>For a finite-state, irreducible, aperiodic Markov chain, regardless of the initial distribution, the n-step transition probabilities P<sup>n</sup>(i,j) converge to the stationary distribution π<sub>j</sub> as n approaches infinity.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <div class="theorem-title">Theorem: Detailed Balance Condition</div>
+                        <p>If there exists a probability distribution π such that π<sub>i</sub>P(i,j) = π<sub>j</sub>P(j,i) for all states i and j, then π is a stationary distribution for the Markov chain.</p>
+                    </div>
                 </section>
                 
                 <section id="formulas">
                     <h2>Formulas (公式)</h2>
                     
                     <div class="formula">
-                        <div class="formula-title">Formula: Discrete Distribution 1 PMF</div>
+                        <div class="formula-title">Formula: n-Step Transition Probability</div>
                         <div class="math-block">
-                            p_X(x) = \text{Placeholder for PMF of Distribution 1}
+                            P<sup>n</sup>(i,j) = [P<sup>n</sup>]<sub>ij</sub>, where P<sup>n</sup> is the n-th power of the transition matrix P.
                         </div>
-                        <p>Description of Discrete Distribution 1. (占位符：分布1的描述)</p>
                     </div>
                     
                     <div class="formula">
-                        <div class="formula-title">Formula: Discrete Distribution 2 PMF</div>
+                        <div class="formula-title">Formula: Calculation of Stationary Distribution</div>
                         <div class="math-block">
-                            p_X(x) = \text{Placeholder for PMF of Distribution 2}
+                            For a finite-state Markov chain, the stationary distribution π can be found by solving the system of linear equations πP = π and ∑<sub>i</sub> π<sub>i</sub> = 1.
                         </div>
-                        <p>Description of Discrete Distribution 2. (占位符：分布2的描述)</p>
                     </div>
-
+                    
                     <div class="formula">
-                        <div class="formula-title">Formula: Discrete Distribution 3 PMF</div>
+                        <div class="formula-title">Formula: Absorption Probability</div>
                         <div class="math-block">
-                            p_X(x) = \text{Placeholder for PMF of Distribution 3}
+                            In a Markov chain with absorbing states, the probability of being absorbed in absorbing state j when starting from state i can be calculated by solving a system of linear equations.
                         </div>
-                        <p>Description of Discrete Distribution 3. (占位符：分布3的描述)</p>
                     </div>
-
+                    
                     <div class="formula">
-                        <div class="formula-title">Formula: Discrete Distribution 4 PMF</div>
+                        <div class="formula-title">Formula: Expected Absorption Time</div>
                         <div class="math-block">
-                            p_X(x) = \text{Placeholder for PMF of Distribution 4}
+                            The expected number of steps to reach any absorbing state from a non-absorbing state i can be calculated by solving a system of linear equations.
                         </div>
-                        <p>Description of Discrete Distribution 4. (占位符：分布4的描述)</p>
-                    </div>
-
-                    <div class="formula">
-                        <div class="formula-title">Formula: Discrete Distribution 5 PMF</div>
-                        <div class="math-block">
-                            p_X(x) = \text{Placeholder for PMF of Distribution 5}
-                        </div>
-                        <p>Description of Discrete Distribution 5. (占位符：分布5的描述)</p>
-                    </div>
-
-                    <div class="formula">
-                        <div class="formula-title">Formula: Discrete Distribution 6 PMF</div>
-                        <div class="math-block">
-                            p_X(x) = \text{Placeholder for PMF of Distribution 6}
-                        </div>
-                        <p>Description of Discrete Distribution 6. (占位符：分布6的描述)</p>
-                    </div>
-
-                    <div class="formula">
-                        <div class="formula-title">Formula: Discrete Distribution 7 PMF</div>
-                        <div class="math-block">
-                            p_X(x) = \text{Placeholder for PMF of Distribution 7}
-                        </div>
-                        <p>Description of Discrete Distribution 7. (占位符：分布7的描述)</p>
                     </div>
                 </section>
             </div>
